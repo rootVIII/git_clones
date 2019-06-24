@@ -28,9 +28,9 @@ class GitClones:
             exit(1)
         else:
             self.page = r.read().decode('utf-8')
-        pattern = r"repository_nwo:%s/(.*)," % self.user
-        for line in findall(pattern, self.page):
-            yield line.split(',')[0]
+            pattern = r"repository_nwo:%s/(.*)," % self.user
+            for line in findall(pattern, self.page):
+                yield line.split(',')[0]
 
     def get_names(self):
         self.repos = [r for r in self.get_repositories()]
