@@ -18,7 +18,6 @@ class GitClones:
         self.git_clone = "git clone https://github.com/%s/" % user
         self.git_clone += "%s.git"
         self.user = user
-        self.page = ''
 
     def get_repo_data(self):
         try:
@@ -27,9 +26,8 @@ class GitClones:
             print("Unable to make request to %s's Github page" % self.user)
             exit(1)
         else:
-            self.page = r.read().decode('utf-8')
             pattern = r"repository_nwo:%s/(.*)," % self.user
-            for line in findall(pattern, self.page):
+            for line in findall(pattern, r.read().decode('utf-8')):
                 yield line.split(',')[0]
 
     def get_repositories(self):
