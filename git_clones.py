@@ -18,7 +18,6 @@ class GitClones:
         self.git_clone = "git clone https://github.com/%s/" % user
         self.git_clone += "%s.git"
         self.user = user
-        self.repos = []
         self.page = ''
 
     def get_repo_data(self):
@@ -34,8 +33,7 @@ class GitClones:
                 yield line.split(',')[0]
 
     def get_repositories(self):
-        self.repos = [repo for repo in self.get_repo_data()]
-        return set(self.repos)
+        return set([repo for repo in self.get_repo_data()])
 
     def download(self, git_repos):
         for git in git_repos:
