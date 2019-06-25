@@ -9,7 +9,7 @@ from argparse import ArgumentParser
 from sys import exit
 from re import findall
 from urllib.request import urlopen
-from subprocess import call, PIPE
+from subprocess import call
 
 
 class GitClones:
@@ -40,7 +40,7 @@ class GitClones:
         for git in git_repos:
             cmd = self.git_clone % (self.user, git)
             try:
-                call(cmd.split(), stdout=PIPE)
+                call(cmd.split())
             except Exception as e:
                 print(e)
                 print('unable to download:%s\n ' % git)
