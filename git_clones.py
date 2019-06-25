@@ -21,7 +21,7 @@ class GitClones:
         self.repos = []
         self.page = ''
 
-    def get_repositories(self):
+    def get_repo_data(self):
         try:
             r = urlopen(self.url)
         except Exception:
@@ -33,8 +33,8 @@ class GitClones:
             for line in findall(pattern, self.page):
                 yield line.split(',')[0]
 
-    def get_names(self):
-        self.repos = [r for r in self.get_repositories()]
+    def get_repositories(self):
+        self.repos = [repo for repo in self.get_repo_data()]
         return set(self.repos)
 
     def download(self, git_repos):
@@ -54,5 +54,5 @@ if __name__ == "__main__":
     parser.add_argument('-u', '--user', required=True, help=h)
     d = parser.parse_args()
     clones = GitClones(d.user)
-    repositories = clones.get_names()
+    repositories = clones.get_repositories()
     clones.download(repositories)
