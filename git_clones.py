@@ -1,7 +1,8 @@
 #! /usr/bin/python3.7
 # rootVIII
+#
 # Download/clone all of a user's public repositories
-# Pass a the Github user's username with the -u option
+# Pass the Github user's username with the -u option
 # Usage: python git_clones.py -u <github username>
 # Example: python git_clones.py -u rootVIII
 #
