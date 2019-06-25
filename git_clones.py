@@ -15,7 +15,8 @@ from subprocess import call
 class GitClones:
     def __init__(self, user):
         self.url = "https://github.com/%s?tab=repositories" % user
-        self.git_clone = "git clone https://github.com/%s/%s.git"
+        self.git_clone = "git clone https://github.com/%s/" % user
+        self.git_clone += "%s.git"
         self.user = user
         self.repos = []
         self.page = ''
@@ -38,7 +39,7 @@ class GitClones:
 
     def download(self, git_repos):
         for git in git_repos:
-            cmd = self.git_clone % (self.user, git)
+            cmd = self.git_clone % git
             try:
                 call(cmd.split())
             except Exception as e:
