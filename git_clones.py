@@ -25,10 +25,9 @@ class GitClones:
         if version_info[0] != 2:
             req = urlopen(self.url)
             return req.read().decode('utf-8')
-        else:
-            req = Request(self.url)
-            request = urlopen(req)
-            return request.read()
+        req = Request(self.url)
+        request = urlopen(req)
+        return request.read()
 
     def get_repo_data(self):
         try:
