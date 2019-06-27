@@ -1,4 +1,3 @@
-#! /usr/bin/python3.7
 # rootVIII
 # Download/clone all of a user's public repositories
 # Pass the Github user's username with the -u option
@@ -6,10 +5,13 @@
 # Example: python git_clones.py -u rootVIII
 #
 from argparse import ArgumentParser
-from sys import exit
+from sys import exit, version_info
 from re import findall
-from urllib.request import urlopen
 from subprocess import call
+try:
+    from urllib.request import urlopen
+except ImportError:
+    from urllib2 import Request, urlopen
 
 
 class GitClones:
@@ -19,15 +21,24 @@ class GitClones:
         self.git_clone += "%s.git"
         self.user = user
 
+    def http_get(self):
+        if version_info[0] != 2:
+            req = urlopen(self.url)
+            return req.read().decode('utf-8')
+        else:
+            req = Request(self.url)
+            request = urlopen(req)
+            return request.read()
+
     def get_repo_data(self):
         try:
-            r = urlopen(self.url)
+            response = self.http_get()
         except Exception:
             print("Unable to make request to %s's Github page" % self.user)
             exit(1)
         else:
             pattern = r"repository_nwo:%s/(.*)," % self.user
-            for line in findall(pattern, r.read().decode('utf-8')):
+            for line in findall(pattern, response):
                 yield line.split(',')[0]
 
     def get_repositories(self):

@@ -12,7 +12,7 @@
 
 
 ##### Requirements:
-<code>python3</code> - should run on any OS
+<code>python3 or python2 - should run on any OS</code>
 
 
 All the clones will be downloaded to the current directory
