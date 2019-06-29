@@ -1,7 +1,7 @@
 # Download/clone all of a user's public repositories
 
 
-##### Pass a the Github user's username with the -u option
+##### Pass a Github user's username with the -u option
 
 
 ##### Usage: 
