@@ -36,9 +36,9 @@ class GitClones:
             print("Unable to make request to %s's Github page" % self.user)
             exit(1)
         else:
-            pattern = r"repository_nwo:%s/(.*)," % self.user
+            pattern = r"<a\s?href\W+%s/(.*)\"\s+" % self.user
             for line in findall(pattern, response):
-                yield line.split(',')[0]
+                yield line.split('\"')[0]
 
     def get_repositories(self):
         return set([repo for repo in self.get_repo_data()])
