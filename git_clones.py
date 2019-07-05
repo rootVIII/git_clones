@@ -51,7 +51,7 @@ class GitClones:
                 call(cmd.split())
             except Exception as e:
                 print(e)
-                print('unable to download:%s\n ' % git)
+                print("unable to download:%s\n" % git)
 
 
 if __name__ == "__main__":
