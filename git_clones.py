@@ -1,5 +1,5 @@
 # rootVIII
-# Download/clone all of a user's public repositories
+# Download/clone all of a user's public source repositories
 # Pass the Github user's username with the -u option
 # Usage: python git_clones.py -u <github username>
 # Example: python git_clones.py -u rootVIII
@@ -16,7 +16,8 @@ except ImportError:
 
 class GitClones:
     def __init__(self, user):
-        self.url = "https://github.com/%s?tab=repositories" % user
+        self.url = "https://github.com/%s" % user
+        self.url += "?&tab=repositories&q=&type=source"
         self.git_clone = "git clone https://github.com/%s/" % user
         self.git_clone += "%s.git"
         self.user = user
@@ -41,7 +42,7 @@ class GitClones:
                 yield line.split('\"')[0]
 
     def get_repositories(self):
-        return set([repo for repo in self.get_repo_data()])
+        return [repo for repo in self.get_repo_data()]
 
     def download(self, git_repos):
         for git in git_repos:
