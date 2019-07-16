@@ -1,7 +1,7 @@
 package main
 
 // rootVIII
-// GET all of a user's repositories
+// Clone/Download all of a user's Github repositories
 // USAGE:
 // ./git_clones -u <username>
 
