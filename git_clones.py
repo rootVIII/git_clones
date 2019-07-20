@@ -18,8 +18,7 @@ class GitClones:
     def __init__(self, user):
         self.url = "https://github.com/%s" % user
         self.url += "?&tab=repositories&q=&type=source"
-        self.git_clone = "git clone https://github.com/%s/" % user
-        self.git_clone += "%s.git"
+        self.git_clone = "git clone https://github.com/%s/%%s.git" % user
         self.user = user
 
     def http_get(self):
