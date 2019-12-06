@@ -16,9 +16,9 @@ except ImportError:
 
 class GitClones:
     def __init__(self, user):
-        self.url = "https://github.com/%s" % user
-        self.url += "?&tab=repositories&q=&type=source"
-        self.git_clone = "git clone https://github.com/%s/%%s.git" % user
+        self.url = 'https://github.com/%s' % user
+        self.url += '?&tab=repositories&q=&type=source'
+        self.git_clone = 'git clone https://github.com/%s/%%s.git' % user
         self.user = user
 
     def http_get(self):
@@ -49,8 +49,7 @@ class GitClones:
             try:
                 call(cmd.split())
             except Exception as e:
-                print(e)
-                print("unable to download:%s\n" % git)
+                print('%s: %s' % (type(e).__name__, str(e)))
 
 
 if __name__ == "__main__":
