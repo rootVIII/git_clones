@@ -3,7 +3,7 @@
 # Pass the Github user's username with the -u option
 # Usage: python git_clones.py -u <github username>
 # Example: python git_clones.py -u rootVIII
-#
+# Compatible with Python2 & Python3
 from argparse import ArgumentParser
 from sys import exit, version_info
 from re import findall
