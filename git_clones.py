@@ -1,20 +1,32 @@
-# rootVIII
-# Download/clone all of a user's public source repositories
-# Pass the Github user's username with the -u option
-# Usage: python git_clones.py -u <github username>
-# Example: python git_clones.py -u rootVIII
-# Compatible with Python2 & Python3
 from argparse import ArgumentParser
 from sys import exit, version_info
 from re import findall
-from subprocess import call
+from subprocess import Popen, PIPE
 try:
     from urllib.request import urlopen
 except ImportError:
     from urllib2 import Request, urlopen
 
 
+# rootVIII
+
+
 class GitClones:
+
+    """
+        Download/clone all of a user's PUBLIC source repositories.
+        Pass the Github user's username with the -u option.
+
+        Usage: python git_clones.py -u <github username>
+
+        Example: python git_clones.py -u rootVIII
+
+        Compatible with Python2 & Python3
+
+        Args:
+            user (str): Github username
+    """
+
     def __init__(self, user):
         self.url = 'https://github.com/%s' % user
         self.url += '?&tab=repositories&q=&type=source'
@@ -32,8 +44,8 @@ class GitClones:
     def get_repo_data(self):
         try:
             response = self.http_get()
-        except Exception:
-            print("Unable to make request to %s's Github page" % self.user)
+        except Exception as err:
+            print('%s: %s' % (type(err).__name__, str(err)))
             exit(1)
         else:
             pattern = r"<a\s?href\W+%s/(.*)\"\s+" % self.user
@@ -46,10 +58,9 @@ class GitClones:
     def download(self, git_repos):
         for git in git_repos:
             cmd = self.git_clone % git
-            try:
-                call(cmd.split())
-            except Exception as e:
-                print('%s: %s' % (type(e).__name__, str(e)))
+            err = Popen(cmd.split(), stderr=PIPE).communicate()[1]
+            if err:
+                print(err.decode('utf-8'))
 
 
 if __name__ == "__main__":
