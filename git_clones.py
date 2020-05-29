@@ -17,14 +17,15 @@ class GitClones:
         Download/clone all of a user's PUBLIC source repositories.
         Pass the Github user's username with the -u option.
 
-        Usage: python git_clones.py -u <github username>
-
-        Example: python git_clones.py -u rootVIII
-
-        Compatible with Python2 & Python3
-
         Args:
             user (str): Github username
+
+        Example:
+            python git_clones.py -u <github username>
+            python git_clones.py -u rootVIII
+
+        Note:
+            Compatible with Python2 & Python3
     """
 
     def __init__(self, user):
