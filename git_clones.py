@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from sys import exit, version_info
 from re import findall
-from subprocess import Popen, PIPE
+from subprocess import call
 try:
     from urllib.request import urlopen
 except ImportError:
@@ -56,11 +56,7 @@ class GitClones:
         return [repo for repo in self.get_repo_data()]
 
     def download(self, git_repos):
-        for git in git_repos:
-            cmd = self.git_clone % git
-            err = Popen(cmd.split(), stderr=PIPE).communicate()[1]
-            if err:
-                print(err.decode('utf-8'))
+        _ = [call((self.git_clone % git).split()) for git in git_repos]
 
 
 if __name__ == "__main__":
