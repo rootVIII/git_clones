@@ -1,7 +1,9 @@
 from argparse import ArgumentParser
-from sys import exit, version_info
 from re import findall
 from subprocess import call
+from sys import exit, version_info
+
+
 try:
     from urllib.request import urlopen
 except ImportError:
