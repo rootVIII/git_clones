@@ -62,10 +62,9 @@ class GitClones:
 
 if __name__ == "__main__":
     message = 'Usage: python git_clones.py -u <github username>'
-    h = 'Github Username'
+    hlp = 'Github Username'
     parser = ArgumentParser(description=message)
-    parser.add_argument('-u', '--user', required=True, help=h)
-    d = parser.parse_args()
-    clones = GitClones(d.user)
+    parser.add_argument('-u', '--user', required=True, help=hlp)
+    clones = GitClones(parser.parse_args().user)
     repositories = clones.get_repositories()
     clones.download(repositories)
