@@ -16,18 +16,18 @@ except ImportError:
 class GitClones:
 
     """
-        Download/clone all of a user's PUBLIC source repositories.
-        Pass the Github user's username with the -u option.
+    Download/clone all of a user's PUBLIC source repositories.
+    Pass the Github user's username with the -u option.
 
-        Args:
-            user (str): Github username
+    Args:
+        user (str): Github username
 
-        Example:
-            python git_clones.py -u <github username>
-            python git_clones.py -u rootVIII
+    Example:
+        python git_clones.py -u <github username>
+        python git_clones.py -u rootVIII
 
-        Note:
-            Compatible with Python2 & Python3
+    Note:
+        Compatible with Python2 & Python3
     """
 
     def __init__(self, user):
