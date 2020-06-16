@@ -48,7 +48,7 @@ func (gc *gitClone) findRepositories(requestData []byte) {
 	result := regexp.MustCompile(pattern)
 	links := result.FindAll(requestData, -1)
 	for _, tag := range links {
-		gc.download(bytes.Split(tag[:len(tag)-1], []byte("/"))[2])
+		gc.download(bytes.Split(tag[:len(tag)-1], []byte{0x2f})[2])
 	}
 }
 
