@@ -25,7 +25,7 @@ func (gc gitClone) httpReq() *[]byte {
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Printf("request failed: %s\n", gc.userURL)
-		os.Exit(1)
+		os.Exit(2)
 	}
 	rBytes, err := ioutil.ReadAll(resp.Body)
 	return &rBytes
@@ -57,7 +57,7 @@ func main() {
 	flag.Parse()
 	if len(*user) < 1 {
 		fmt.Println("required argument: -u <Github username>")
-		os.Exit(1)
+		os.Exit(2)
 	}
 
 	var gitclone = &gitClone{username: *user, baseURL: "https://github.com/"}
