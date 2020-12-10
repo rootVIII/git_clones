@@ -57,7 +57,7 @@ func main() {
 	flag.Parse()
 	if len(*user) < 1 {
 		fmt.Println("required argument: -u <Github username>")
-		os.Exit(2)
+		os.Exit(1)
 	}
 
 	var gitclone = &gitClone{username: *user, baseURL: "https://github.com/"}
