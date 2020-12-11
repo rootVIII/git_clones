@@ -23,12 +23,10 @@ func (gc gitClone) httpReq() *[]byte {
 	req, err := http.NewRequest("GET", userURL, nil)
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println("here1")
 		panic(err)
 	}
 	rBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println("here2")
 		panic(err)
 	}
 	return &rBytes
