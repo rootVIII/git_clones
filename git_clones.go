@@ -65,7 +65,7 @@ func main() {
 	}
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Printf("Error: %v\n", err)
+			fmt.Printf("error: %v\n", err)
 			os.Exit(1)
 		}
 	}()
