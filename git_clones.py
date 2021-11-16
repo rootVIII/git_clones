@@ -24,10 +24,11 @@ class GitClones:
 
     Example:
         python git_clones.py -u <github username>
-        python git_clones.py -u rootVIII
+        python3 git_clones.py -u rootVIII
 
     Note:
-        Compatible with Python2 & Python3
+        Compatible with Python2 & Python3.
+        Pycodestyle validated.
     """
 
     def __init__(self, user):
@@ -45,28 +46,26 @@ class GitClones:
         return request.read()
 
     def get_repo_data(self):
-        try:
-            response = self.http_get()
-        except Exception as err:
-            print('%s: %s' % (type(err).__name__, str(err)))
-            exit(1)
-        else:
-            pattern = r"<a\s?href\W+%s/(.*)\"\s+" % self.user
-            for line in findall(pattern, response):
-                yield line.split('\"')[0]
+        pattern = r"<a\s?href\W+%s/(.*)\"\s+" % self.user
+        for line in findall(pattern, self.http_get()):
+            yield line.split('\"')[0]
 
-    def get_repositories(self):
+    def get_repos(self):
         return [repo for repo in self.get_repo_data()]
 
-    def download(self, git_repos):
-        _ = [call((self.git_clone % git).split()) for git in git_repos]
+    def download(self):
+        _ = [call((self.git_clone % git).split()) for git in self.get_repos()]
 
 
 if __name__ == "__main__":
-    message = 'Usage: python git_clones.py -u <github username>'
-    hlp = 'Github Username'
+    message = 'Usage: python3 git_clones.py -u <github username>'
     parser = ArgumentParser(description=message)
-    parser.add_argument('-u', '--user', required=True, help=hlp)
+    parser.add_argument('-u', '--user',
+                        required=True, help='Github Username')
+
     clones = GitClones(parser.parse_args().user)
-    repositories = clones.get_repositories()
-    clones.download(repositories)
+    try:
+        clones.download()
+    except Exception as err:
+        print('%s: %s' % (type(err).__name__, str(err)))
+        exit(1)
