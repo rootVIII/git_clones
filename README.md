@@ -22,7 +22,7 @@ g++ git_clones.cpp -o git_clones -lcurl -std=c++11
 - <i>Cloned projects get downloaded to the current directory</i>
 <br><br>
 
-###### Python version with stdlib only:
+###### A Python version is also available:
 <pre><code>from argparse import ArgumentParser
 from re import findall
 from subprocess import call
