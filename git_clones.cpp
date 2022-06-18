@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <stdexcept>
 #include <utility>
@@ -16,7 +17,7 @@ MacOS:
 c++ git_clones.cpp -o git_clones -lcurl -std=c++11
 
 Linux:
-TODO
+g++ git_clones.cpp -o git_clones -lcurl -std=c++11
 */
 
 
