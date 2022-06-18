@@ -9,7 +9,7 @@
 c++ git_clones.cpp -o git_clones -lcurl -std=c++11
 
 # Build Linux:
-TODO
+g++ git_clones.cpp -o git_clones -lcurl -std=c++11
 
 # Example Execution:
 ./git_clones rootVIII
