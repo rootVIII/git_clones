@@ -80,7 +80,7 @@ public:
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        cout << "Provide a single Github username as a command-line argument\n";
+        cerr << "Provide a single Github username as a command-line argument\n";
         exit(1);
     }
 
