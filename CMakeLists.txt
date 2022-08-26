@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(git_clones)
 
-include_directories(/usr/local/opt/curl/include/)
+include_directories(/usr/bin/curl)
 
 set(CMAKE_CXX_STANDARD 17)
 
