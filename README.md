@@ -13,6 +13,6 @@
 All cloned repositories will be downloaded to the current working directory.
 
 
-Tested on MacOS Big Sur, Ubuntu 18-20.04.LTS, Windows 11
+Tested on MacOS Big Sur, Ubuntu 18.04/20.04/22.04.LTS, Windows 11
 <hr>
 <b>Author: rootVIII 2019-2022</b><br><br>
