@@ -3,7 +3,7 @@
 
 ###### Pass a Github username as a command line argument
 <code>python3 git_clones.py -u &lt;github username&gt;</code>
-<br><br>
+<br>
 
 ###### Requirements:
 - Python3
